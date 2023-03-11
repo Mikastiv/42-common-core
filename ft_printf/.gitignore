@@ -1,0 +1,10 @@
+*.o
+libftprintf.a
+libft.a
+.DS_Store
+main.c
+a.out
+pft/
+*.dSYM
+.vscode/
+printfTester/
