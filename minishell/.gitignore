@@ -1,0 +1,9 @@
+.DS_Store
+*.o
+minishell
+.vscode
+.cache/*
+.clangd
+compile_commands.json
+test*
+*.dSYM/*
