@@ -25,7 +25,7 @@ EOF
         # Setup database
         mysqld --skip-networking=1 &
         for i in {0..30}; do
-            if mariadb -u root -proot --database=mysql <<<'SELECT 1;' &> /dev/null; then
+            if mariadb -u root -p$MYSQL_ROOT_PASSWORD --database=$MYSQL_DATABASE <<<'SELECT 1;' &> /dev/null; then
                 break
             fi
             sleep 1
@@ -33,7 +33,7 @@ EOF
         if [ "$i" = 30 ]; then
             echo "Error while starting server"
         fi
-        mariadb -u root -proot < "$MYSQL_DATADIR/initdb.sql" && killall mysqld
+        mariadb -u root -p$MYSQL_ROOT_PASSWORD < "$MYSQL_DATADIR/initdb.sql" && killall mysqld
     fi
 
     echo "MariaDB listening on port 3306"
